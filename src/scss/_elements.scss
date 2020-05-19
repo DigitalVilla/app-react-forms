@@ -1,0 +1,149 @@
+.button {
+  background-image: linear-gradient(
+    to top right,
+    rgb(46, 94, 182),
+    rgb(41, 117, 179)
+  );
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  -webkit-appearance: none;
+}
+
+.widget-position {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+}
+
+.feedback-trigger {
+  @extend .button;
+  @extend .widget-position;
+}
+
+.form-widget-container {
+  @extend .widget-position;
+  background: #fafafa;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  display: none;
+  width: 300px;
+  color: #444;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 400px;
+    padding: 1.2rem 1.2rem 0.5rem;
+
+    fieldset.ratings {
+      border: 0;
+      width: 100%;
+
+      h2 {
+        margin-bottom: 1.5rem;
+        color: #444;
+      }
+      .radio-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .feedback-otpion {
+        border: 1px solid lightgray;
+        background: #eee;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        .emoji {
+          font-size: 2.5rem;
+          line-height: 1;
+        }
+        .level {
+          margin-top: 0.5rem;
+          // font-size: ;
+        }
+
+        input {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+        }
+
+        &.active {
+          background-image: linear-gradient(
+            to top right,
+            rgb(46, 94, 182),
+            rgb(41, 117, 179)
+          );
+          color: white;
+        }
+
+        &:focus-within {
+          box-shadow: $focus;
+        }
+      }
+    }
+
+    .textarea {
+      width: 100%;
+      color: #444;
+
+      textarea {
+        border: 1px solid lightgray;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        height: 80px;
+        width: 100%;
+        resize: none;
+        padding: 0.5rem;
+      }
+    }
+
+    input[type="submit"] {
+      @extend .button;
+    }
+
+    .close-button {
+      @extend .button;
+      border-radius: 50%;
+      padding: 4px 7px;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .feedback-success {
+    padding: 2rem;
+    p {
+      margin: 0.8rem 0;
+    }
+    .dismiss {
+      @extend .button;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &.active {
+    display: block;
+  }
+}
